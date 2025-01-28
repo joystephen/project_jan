@@ -32,12 +32,13 @@ const streamingServices = [
   { name: "Netflix", logo: netflixLogo},
   { name: "Amazon Prime Video", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" },
   { name: "Disney+", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" },
-  { name: "Hulu", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Hulu_Logo.svg" },
+  // { name: "Hulu", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Hulu_Logo.svg" },
+  { name: "YouTube", logo: "https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" },
+
   { name: "HBO Max", logo: "https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" },
   { name: "Apple TV+", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Apple_TV_Plus_Logo.svg" },
   { name: "Peacock", logo: "https://upload.wikimedia.org/wikipedia/commons/4/42/Peacock_Logo.svg" },
   { name: "Paramount+", logo: "https://upload.wikimedia.org/wikipedia/commons/e/ef/Paramount_Plus_logo.svg" },
-  { name: "YouTube", logo: "https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" },
   { name: "Crunchyroll", logo: "https://upload.wikimedia.org/wikipedia/commons/6/67/Crunchyroll_Logo.svg" }
 ];
 
@@ -45,18 +46,11 @@ const streamingServices = [
 function StreamingServices() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{backgroundColor:'black', height:"80px"}}>
       <ImageList className={classes.imageList} cols={7}>
         {streamingServices.map((item)=>(
           <ImageListItem>
-            <img src={item.logo} alt={item.name} style={{width: "150px", height: "100px", alignItems:"center"}} />
-            <ImageListItemBar
-              title={item.name}
-              classes={{
-                root: classes.titleBar,
-                title: classes.title,
-              }}
-            />
+            <img src={item.logo} alt={item.name} style={{height: "80px", alignItems:"center"}} />
           </ImageListItem>
         ))}
       </ImageList>

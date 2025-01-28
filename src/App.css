@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: black;
+  margin: 0; /* Removes default margin for the body */
+}
+
+#root {
+  height: 100vh;
+  color: white;
+}
+
+/* App.css */
+#root {
+  margin: 20px 20px 0 20px; /* Top, Right, Bottom, Left */
+  background-color: black;
+  color: white;
+  height: calc(100vh - 20px); /* Adjust height to account for top margin */
+  padding: 10px; /* Optional: Adds padding inside the content */
+}
