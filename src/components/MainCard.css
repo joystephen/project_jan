@@ -1,0 +1,24 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh; /* Takes up half of the viewport height */
+    background-size: cover; /* Makes the image cover the whole container */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* Prevents image repetition */
+    position: relative; /* Required for positioning any child elements inside */
+    margin-bottom: 2%;
+  }
+  
+  .toolbar::before {
+    content: ""; /* Optional, adds a transparent overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black transparent overlay */
+    z-index: 1;
+  }
+  

@@ -1,4 +1,7 @@
 import React from "react";
+import { useState,useEffect } from "react";
+import "./MainCard.css"; // Importing a CSS file
+ 
 
 const requestObj = {
   method: 'GET',
@@ -8,36 +11,28 @@ const requestObj = {
   }
 };
 
-function fetchTopRatedMovies() {
-  return new Promise((resolve, reject) => {
-    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', requestObj)
-      .then(res => {
-        if (!res.ok) {
-          reject('Failed to fetch data');
-        } else {
-          resolve(res.json());
-        }
-      })
-      .catch(err => reject(err));
-  });
-}
-
-let image = "https://image.tmdb.org/t/p/w500"
-fetchTopRatedMovies()
-  .then(data => {
-    console.log('Top Rated Movies:', data);
-    image = image + data["results"][0]["backdrop_path"]
-    console.log(image)
-  })
-  .catch(err => {
-    console.error('Error:', err);
-  });
-
 function MainCard() {
+  const [image, setImage] = useState("");
+
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', requestObj)
+      .then(res => res.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          setImage(`https://image.tmdb.org/t/p/w500${data.results[0].backdrop_path}`);
+        }
+        data = {
+          name: "joy",
+          age: 27
+        }
+        console.log(`hello there ${data.name}`)
+        console.log(`think your age is ${data.age}`)
+      })
+      .catch(err => console.error('Error:', err));
+  }, []); // Runs once when the component mounts
+
   return (
-    <div className="toolbar">
-      <img src = {image}></img>
-      {/* Add navigation items like search or profile here */}
+    <div className="toolbar"  style={{ backgroundImage: `url(${image})` }}>
     </div>
   );
 }
